@@ -1,4 +1,4 @@
-class footer extends HTMLElement {
+class footerBar extends HTMLElement {
    _shadowRoot = null;
    _style = null;
    
@@ -16,9 +16,14 @@ class footer extends HTMLElement {
            }
            
            footer {
-                width: 100%;
-                background-color: #005792;
+                background-color: #D1F4FA;
                 height: 50px;
+                text-align: center;
+                bottom: 0;
+                margin-top: 72px;
+                color: black;
+                padding: 15px;
+                font-size: 16px;
            }
        `;
    }
@@ -38,12 +43,10 @@ class footer extends HTMLElement {
        this._shadowRoot.appendChild(this._style);
        this._shadowRoot.innerHTML += `
        <footer>
-           <div class="title-app">
-               <h1 style="color: white;">Aplikasi Pencatatan Online</h1>
-           </div>
+            <p>&copy; 2024 - Aplikasi Pencatatan Online oleh Sarif Hidayatullah</p>
        </footer>
        `
    }
 }
 
-customElements.define('footer', footer);
+customElements.define('footer-bar', footerBar);

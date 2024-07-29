@@ -1,2 +1,2 @@
 import './header-bar.js';
-import './footer.js';
+import './footer-bar.js';

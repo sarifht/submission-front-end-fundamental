@@ -20,7 +20,7 @@ class headerBar extends HTMLElement {
                 width: 100%;
                 justify-content: center;
                 position: fixed;
-                padding: 24px;
+                padding: 20px;
                 z-index: 1;
             }
             
