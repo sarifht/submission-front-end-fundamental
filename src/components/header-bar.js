@@ -8,20 +8,19 @@ class headerBar extends HTMLElement {
         this._shadowRoot = this.attachShadow({ mode: 'open' });
         this._style = document.createElement('style');
     }
-
     _updateStyle() {
         this._style.textContent = `
             :host {
                 display: block;
             }
-
+            
             nav {
                 display: flex;
+                background-color: #005792;
                 width: 100%;
-                background-color: #1A3636;
                 justify-content: center;
-                padding: 20px;
                 position: fixed;
+                padding: 24px;
                 z-index: 1;
             }
             
@@ -45,12 +44,12 @@ class headerBar extends HTMLElement {
 
         this._shadowRoot.appendChild(this._style);
         this._shadowRoot.innerHTML += `
-        <nav>
+        <nav> 
             <div class="title-app">
-                <h1>Notes App</h1>
+                <h1>Aplikasi Pencatatan Online</h1>
             </div>
         </nav>
-    `;
+        `
     }
 }
 
