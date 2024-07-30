@@ -19,16 +19,21 @@ class noteForm extends HTMLElement {
                 display: flex;
                 align-items: center;
                 flex-direction: column;
-                padding: 10%;
+                padding-top: 10%;
             }
 
             .wrapper .form-wrapper {
                 background-color: white;
-                justify-content: center;
-                padding: 2em;
-                width: 500px;
-                height: 250px;
+                opacity: 0.8;
                 border: none;
+                border-radius: 10px;
+                box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+                justify-content: center;
+                padding-left: 2em;
+                padding-right: 1em;
+                padding-bottom: 3em;
+                width: 600px;
+                height: 350px;
             }
             
             .form-wrapper h1 {
@@ -46,6 +51,15 @@ class noteForm extends HTMLElement {
                 padding: 10px;
                 width: 90%;
             }
+            
+            .form-group button {
+                color: white;
+                background-color: green;
+                padding: 1rem;
+                border-radius: 6px;
+                width: 90%;
+                cursor: pointer;
+            }
 
         `;
     }
@@ -58,6 +72,26 @@ class noteForm extends HTMLElement {
         this.render();
         this.shadowRoot.querySelector('#form').addEventListener('submit', this._handleSubmit.blind(this));
     }
+
+    _handleSubmit (event) {
+        event.preventDefault ();
+
+        const title = this._shadowRoot.querySelector('#title').value;
+        const description = this._shadowRoot.querySelector('#description').value;
+
+        const newNote = {
+            id: `notes-$(Math.random().toString(36).substring(2, 9))`,
+            title: title,
+            body: description,
+            createdAt: new Date().toISOString(),
+            archived: false,
+        };
+
+        this.dispatchEvent(new customElements('note-added', {detail: newNote}));
+        this._shadowRoot.querySelector('#title').value = '';
+        this._shadowRoot.querySelector('#description').value = '';
+    }
+
 
     render() {
         this._emptyContent();
