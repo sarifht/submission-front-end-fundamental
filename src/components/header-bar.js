@@ -1,33 +1,9 @@
 class headerBar extends HTMLElement {
     _shadowRoot = null;
-    _style = null;
 
     constructor() {
         super();
-
         this._shadowRoot = this.attachShadow({ mode: 'open' });
-        this._style = document.createElement('style');
-    }
-    _updateStyle() {
-        this._style.textContent = `
-            :host {
-                display: block;
-            }
-            
-            nav {
-                display: flex;
-                background-color: #005792;
-                width: 100%;
-                justify-content: center;
-                position: fixed;
-                padding: 20px;
-                z-index: 1;
-            }
-            
-            nav .title-app {
-                color: white;
-            }
-        `;
     }
 
     _emptyContent() {
@@ -40,9 +16,12 @@ class headerBar extends HTMLElement {
 
     render() {
         this._emptyContent();
-        this._updateStyle();
 
-        this._shadowRoot.appendChild(this._style);
+        const link = document.createElement('link');
+        link.setAttribute('rel', 'stylesheet');
+        link.setAttribute('href', 'src/styles/style.css');
+
+        this._shadowRoot.appendChild(link);
         this._shadowRoot.innerHTML += `
         <nav> 
             <div class="title-app">

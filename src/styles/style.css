@@ -13,3 +13,18 @@ main {
     padding-bottom: 2em;
 }
 
+
+/* Header */
+nav {
+    display: flex;
+    background-color: #005792;
+    width: 100%;
+    justify-content: center;
+    position: fixed;
+    padding: 40px;
+    z-index: 1;
+}
+
+nav .title-app {
+    color: white;
+}
