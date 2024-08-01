@@ -28,3 +28,18 @@ nav {
 nav .title-app {
     color: white;
 }
+
+
+/* Footer */
+footer {
+    display: flex;
+    background-color: #D1F4FA;
+    height: 60px;
+    align-items: center;
+    justify-content: center;
+    bottom: 0;
+    margin-top: 72px;
+    color: black;
+    padding: 15px;
+    font-size: 16px;
+}
