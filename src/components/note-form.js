@@ -53,10 +53,12 @@ class noteForm extends HTMLElement {
             }
             
             .form-group button {
-                color: white;
-                background-color: green;
+                color: black;
+                background-color: #FFB200;
                 padding: 1rem;
+                font-size: 1rem;
                 border-radius: 6px;
+                border: none;
                 width: 90%;
                 cursor: pointer;
             }
