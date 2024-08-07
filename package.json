@@ -1,0 +1,11 @@
+{
+  "name": "submission-fundamental-front-end",
+  "version": "1.0.0",
+  "description": "Submission: Membangun Notes App",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Sarif Hidayatullah",
+  "license": "ISC"
+}
