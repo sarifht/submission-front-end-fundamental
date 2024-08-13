@@ -1,5 +1,5 @@
-import './src/components/index.js';
-import notesData from './src/data/data.js';
+import './components/index.js';
+import notesData from './data/data.js';
 
 const noteList = document.querySelector('note-list');
 noteList.note = notesData;
