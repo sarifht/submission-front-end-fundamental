@@ -190,7 +190,9 @@ nav .title-app {
   font-size: 0.9em;
   line-height: 1.5em;
   color: #333;
-  white-space: nowrap; /* Membuat teks tetap dalam satu baris */
+  display: -webkit-box; /* Menggunakan box model */
+  -webkit-box-orient: vertical; /* Mengatur orientasi box secara vertikal */
+  -webkit-line-clamp: 2; /* Menampilkan maksimal 2 baris */
   overflow: hidden; /* Mengatur overflow teks agar tidak meluap */
   text-overflow: ellipsis; /* Menambahkan titik tiga jika teks terlalu panjang */
 }
