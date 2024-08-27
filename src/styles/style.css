@@ -1,12 +1,12 @@
 * {
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
-    font-family: "Nunito", sans-serif;
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: "Nunito", sans-serif;
 }
 
 body {
-    background-color: #EDF9FC;
+  background-color: #edf9fc;
 }
 
 /* .content {
@@ -16,281 +16,284 @@ body {
 } */
 
 main {
-    flex: 1;
-    padding-bottom: 2em;
+  flex: 1;
+  padding-bottom: 2em;
 }
-
 
 /* Header */
 nav {
-    display: flex;
-    background-color: #005792;
-    width: 100%;
-    justify-content: center;
-    position: fixed;
-    padding: 24px;
-    z-index: 1;
+  display: flex;
+  background-color: #005792;
+  width: 100%;
+  justify-content: center;
+  position: fixed;
+  padding: 24px;
+  z-index: 1;
 }
 
 nav .title-app {
-    color: white;
-    font-size: 1em;
+  color: white;
+  font-size: 1em;
 }
-
 
 /* Form Input */
 .note-wrapper {
-    display: flex;
-    width: 100%;
-    align-items: center;
-    padding-top: 10%;
-    flex-direction: column;
+  display: flex;
+  width: 100%;
+  align-items: center;
+  padding-top: 10%;
+  flex-direction: column;
 }
 
 .note-form-wrapper {
-    background-color: white;
-    opacity: 0.8;
-    border: none;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-    justify-content: center;
-    padding: 2em;
-    width: 100%;
-    max-width: 400px;
-    margin: auto;
+  background-color: white;
+  opacity: 0.8;
+  border: none;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  justify-content: center;
+  padding: 2em;
+  width: 100%;
+  max-width: 400px;
+  margin: auto;
 }
 
-.form-title, .form-description {
-    position: relative;
+.form-title,
+.form-description {
+  position: relative;
 }
 
 .error-message {
-    color: #EF5A6F;
-    font-size: 0.75rem;
-    margin-top: 0;
-    display: none; /* Tersembunyi secara default */
+  color: #ef5a6f;
+  font-size: 0.75rem;
+  margin-top: 0;
+  display: none; /* Tersembunyi secara default */
 }
 
 .char-count {
-    display: block;
-    text-align: right;
-    font-size: 0.7rem;
-    color: #666;
-    margin-bottom: 1em;
-
+  display: block;
+  text-align: right;
+  font-size: 0.7rem;
+  color: #666;
+  margin-bottom: 1em;
 }
 
-#note-title, #note-description {
-    padding-right: 3em;
+#note-title,
+#note-description {
+  padding-right: 3em;
 }
-
 
 .note-form-wrapper h1 {
-    text-align: center;
-    margin-bottom: 1em;
-    font-weight: 700;
-    font-size: 24px;
-    width: 100%;
+  text-align: center;
+  margin-bottom: 1em;
+  font-weight: 700;
+  font-size: 24px;
+  width: 100%;
 }
 
 .note-form {
-    display: grid;
-    grid-template-columns: 1fr;
-    grid-gap: 1em;
-    width: 100%;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-gap: 1em;
+  width: 100%;
 }
 
 .note-form .form-title {
-    width: 100%;
-    margin-bottom: auto;
+  width: 100%;
+  margin-bottom: auto;
 }
 
 .note-form .form-title input {
-    font-size: 1rem;
-    width: 100%;
-    margin-bottom: 10px;
-    padding: 10px;
-    box-sizing: border-box;
+  font-size: 1rem;
+  width: 100%;
+  margin-bottom: 10px;
+  padding: 10px;
+  box-sizing: border-box;
 }
 
 .note-form .form-description {
-    width: 100%;
+  width: 100%;
 }
 
 .note-form .form-description textarea {
-    font-size: 1rem;
-    padding: 6px;
-    width: 100%;
-    height: 9rem;
-    box-sizing: border-box;
+  font-size: 1rem;
+  padding: 6px;
+  width: 100%;
+  height: 9rem;
+  box-sizing: border-box;
 }
 
 .note-form .form-group {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .form-description {
-    margin-bottom: 1em;
+  margin-bottom: 1em;
 }
 
 .note-form .form-group button {
-    color: black;
-    font-weight: 600;
-    font-size: 1rem;
-    line-height: 1.5rem;
-    background-color: #FFB200;
-    padding-top: 0.4rem;
-    padding-bottom: 0.4rem;
-    padding-left: 2rem;
-    padding-right: 2rem;
-    border-radius: 5px;
-    transition: all 0.2s ease-in-out;
-    border: white;
-    width: 100%;
-    cursor: pointer;
+  color: black;
+  font-weight: 600;
+  font-size: 1rem;
+  line-height: 1.5rem;
+  background-color: #ffb200;
+  padding-top: 0.4rem;
+  padding-bottom: 0.4rem;
+  padding-left: 2rem;
+  padding-right: 2rem;
+  border-radius: 5px;
+  transition: all 0.2s ease-in-out;
+  border: white;
+  width: 100%;
+  cursor: pointer;
 }
 
 .note-form .form-group button:hover {
-    opacity: 0.8;
+  opacity: 0.8;
 }
-
 
 /* Note List */
 .note-list {
-    display: block;
+  display: block;
 }
 
 .note-list .grid-wrapper {
-    padding-top: 5%;
-    display: grid;
+  padding-top: 5%;
+  display: grid;
 }
 
 .note-list .grid-wrapper .all-notes {
-    padding-top: 1em;
-    text-align: center;
+  padding-top: 1em;
+  text-align: center;
 }
 
 .note-list .grid-wrapper hr {
-    width: 90%;
-    border: 1.8px solid #FFB200;
-    margin: 1em auto;
+  width: 90%;
+  border: 1.8px solid #ffb200;
+  margin: 1em auto;
 }
 
 .note-list .grid-wrapper .grid-container {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    align-items: center;
-    justify-items: center;
-    gap: 2em;
-    padding: 2em;
-}
-
-.note-list .grid-wrapper .grid-container .card {
-    background-color: white;
-    opacity: 0.8;
-    border: none;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-    width: 100%;
-    max-width: 300px;
-    height: 100%;
-    padding: 1em;
-    text-align: left;
-}
-
-.note-list .grid-wrapper .grid-container .card h4 {
-    margin-bottom: 0.5em; 
-    font-size: 1.2em; 
-}
-
-
-.note-list .grid-wrapper .grid-container .card .date {
-    font-size: 0.7em;
-    margin-top: -9px;
-    color: #666;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  align-items: center;
+  justify-items: center;
+  gap: 2em;
+  padding: 2em;
 }
 
 .note-list .grid-wrapper .grid-container .card .desc {
-    padding-top: 1em;
-    font-size: 0.9em;
-    line-height: 1.5em;
-    color: #333;
+  padding-top: 1em;
+  font-size: 0.9em;
+  line-height: 1.5em;
+  color: #333;
+  white-space: nowrap; /* Membuat teks tetap dalam satu baris */
+  overflow: hidden; /* Mengatur overflow teks agar tidak meluap */
+  text-overflow: ellipsis; /* Menambahkan titik tiga jika teks terlalu panjang */
 }
 
+.note-list .grid-wrapper .grid-container .card {
+  background-color: white;
+  opacity: 0.8;
+  border: none;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  width: 100%;
+  max-width: 300px;
+  height: 100%;
+  padding: 1em;
+  text-align: left;
+}
 
+.note-list .grid-wrapper .grid-container .card h4 {
+  margin-bottom: 0.5em;
+  font-size: 1.2em;
+}
+
+.note-list .grid-wrapper .grid-container .card .date {
+  font-size: 0.7em;
+  margin-top: -9px;
+  color: #666;
+}
+
+.note-list .grid-wrapper .grid-container .card .desc {
+  padding-top: 1em;
+  font-size: 0.9em;
+  line-height: 1.5em;
+  color: #333;
+}
 
 /* Footer */
 footer {
-    display: flex;
-    background-color: #D1F4FA;
-    height: 60px;
-    align-items: center;
-    justify-content: center;
-    bottom: 0;
-    margin-top: 72px;
-    color: black;
-    padding: 15px;
-    font-size: 12px;
+  display: flex;
+  background-color: #d1f4fa;
+  height: 60px;
+  align-items: center;
+  justify-content: center;
+  bottom: 0;
+  margin-top: 72px;
+  color: black;
+  padding: 15px;
+  font-size: 12px;
 }
-
 
 /* Media Query */
 @media screen and (max-width: 768px) {
-    nav {
-      padding: 20px;
-    }
-
-    .wrapper {
-      padding-top: 20%;
-    }
-  
-    .wrapper .form-wrapper {
-      width: 50%;
-    }
-    .note-wrapper {
-      padding-top: 20%;
-    }
-    
-    .note-form-wrapper {
-        padding: 1.5em;
-        max-width: 80%; /* Memperluas form di layar kecil */
-    }
-
-    .note-form .form-title input,
-    .note-form .form-description textarea,
-    .note-form .form-group button {
-        font-size: 0.9rem; /* Mengurangi ukuran font */
-        padding: 8px;
-    }
+  nav {
+    padding: 20px;
   }
-  
-  @media screen and (max-width: 576px) {
-    nav {
-      padding: 16px;
-    }
 
-    .wrapper {
-      padding-top: 30%;
-    }
-
-    .note-wrapper {
-      padding-top: 40%;
-    }
-
-    .note-form-wrapper {
-        padding: 1em;
-        max-width: 200px;
-        align-items: center;
-        justify-items: center;
-    }
-
-    .note-form .form-title input,
-    .note-form .form-description textarea,
-    .note-form .form-group button {
-        font-size: 0.8rem; /* Mengurangi ukuran font lebih lanjut */
-        padding: 6px;
-    }
+  .wrapper {
+    padding-top: 20%;
   }
+
+  .wrapper .form-wrapper {
+    width: 50%;
+  }
+  .note-wrapper {
+    padding-top: 20%;
+  }
+
+  .note-form-wrapper {
+    padding: 1.5em;
+    max-width: 80%; /* Memperluas form di layar kecil */
+  }
+
+  .note-form .form-title input,
+  .note-form .form-description textarea,
+  .note-form .form-group button {
+    font-size: 0.9rem; /* Mengurangi ukuran font */
+    padding: 8px;
+  }
+}
+
+@media screen and (max-width: 576px) {
+  nav {
+    padding: 16px;
+  }
+
+  .wrapper {
+    padding-top: 30%;
+  }
+
+  .note-wrapper {
+    padding-top: 40%;
+  }
+
+  .note-form-wrapper {
+    padding: 1em;
+    max-width: 200px;
+    align-items: center;
+    justify-items: center;
+  }
+
+  .note-form .form-title input,
+  .note-form .form-description textarea,
+  .note-form .form-group button {
+    font-size: 0.8rem; /* Mengurangi ukuran font lebih lanjut */
+    padding: 6px;
+  }
+}
