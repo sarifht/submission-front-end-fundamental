@@ -17,11 +17,6 @@ class headerBar extends HTMLElement {
   render() {
     this._emptyContent();
 
-    const link = document.createElement("link");
-    link.setAttribute("rel", "stylesheet");
-    link.setAttribute("href", "src/style/style.css");
-
-    this._shadowRoot.appendChild(link);
     this._shadowRoot.innerHTML += `
         <nav> 
             <div class="title-app">
