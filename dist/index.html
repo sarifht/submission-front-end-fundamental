@@ -2,42 +2,24 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
     <title>Notes App</title>
-
-    <!-- Google Font -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap"
       rel="stylesheet"
     />
-
-    <!-- Add Tab Browser Icon -->
     <link rel="icon" href="src/img/book-icon.png" type="image/x-icon" />
+    <script defer="defer" src="bundle.js"></script>
   </head>
   <body>
-    <!-- Header Content -->
-    <header>
-      <header-bar></header-bar>
-    </header>
-
-    <!-- Main Content -->
+    <header><header-bar></header-bar></header>
     <main>
-      <div id="noteForm">
-        <note-form></note-form>
-      </div>
-      <div id="noteList">
-        <note-list></note-list>
-      </div>
+      <div id="noteForm"><note-form></note-form></div>
+      <div id="noteList"><note-list></note-list></div>
     </main>
-
-    <!-- Footer Content -->
-    <footer>
-      <footer-bar></footer-bar>
-    </footer>
-
-    <!-- Linked JS -->
+    <footer><footer-bar></footer-bar></footer>
     <script type="module" src="src/app.js"></script>
   </body>
 </html>

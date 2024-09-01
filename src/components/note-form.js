@@ -10,24 +10,36 @@ class noteForm extends HTMLElement {
 
   connectedCallback() {
     this.render();
-    this._shadowRoot.querySelector("#note-form").addEventListener("submit", this._handleSubmit.bind(this));
+    this._shadowRoot
+      .querySelector("#note-form")
+      .addEventListener("submit", this._handleSubmit.bind(this));
 
     // Tambahkan event listener untuk update jumlah karakter yang tersisa
-    this._shadowRoot.querySelector("#note-title").addEventListener("input", this._updateTitleCharCount.bind(this));
-    this._shadowRoot.querySelector("#note-description").addEventListener("input", this._updateDescriptionCharCount.bind(this));
+    this._shadowRoot
+      .querySelector("#note-title")
+      .addEventListener("input", this._updateTitleCharCount.bind(this));
+    this._shadowRoot
+      .querySelector("#note-description")
+      .addEventListener("input", this._updateDescriptionCharCount.bind(this));
 
     // Tambahkan event listener untuk validasi
-    this._shadowRoot.querySelector("#note-title").addEventListener("input", this._validateTitle.bind(this));
-    this._shadowRoot.querySelector("#note-description").addEventListener("input", this._validateDescription.bind(this));
+    this._shadowRoot
+      .querySelector("#note-title")
+      .addEventListener("input", this._validateTitle.bind(this));
+    this._shadowRoot
+      .querySelector("#note-description")
+      .addEventListener("input", this._validateDescription.bind(this));
   }
 
   _handleSubmit(event) {
     event.preventDefault();
 
     const titleInput = this._shadowRoot.querySelector("#note-title");
-    const descriptionInput = this._shadowRoot.querySelector("#note-description");
+    const descriptionInput =
+      this._shadowRoot.querySelector("#note-description");
     const titleError = this._shadowRoot.querySelector("#title-error");
-    const descriptionError = this._shadowRoot.querySelector("#description-error");
+    const descriptionError =
+      this._shadowRoot.querySelector("#description-error");
 
     const title = titleInput.value.trim();
     const description = descriptionInput.value.trim();
@@ -78,7 +90,8 @@ class noteForm extends HTMLElement {
   }
 
   _updateDescriptionCharCount() {
-    const descriptionInput = this._shadowRoot.querySelector("#note-description");
+    const descriptionInput =
+      this._shadowRoot.querySelector("#note-description");
     const charCount = this._shadowRoot.querySelector("#description-char-count");
     charCount.textContent = `${descriptionInput.value.length}/300`;
   }
@@ -97,8 +110,10 @@ class noteForm extends HTMLElement {
   }
 
   _validateDescription() {
-    const descriptionInput = this._shadowRoot.querySelector("#note-description");
-    const descriptionError = this._shadowRoot.querySelector("#description-error");
+    const descriptionInput =
+      this._shadowRoot.querySelector("#note-description");
+    const descriptionError =
+      this._shadowRoot.querySelector("#description-error");
 
     if (descriptionInput.value.length < 15) {
       descriptionError.textContent = `Deskripsi catatan harus memiliki minimal 15 karakter.`;
