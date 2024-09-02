@@ -9,14 +9,22 @@ body {
   background-color: #edf9fc;
 }
 
-/* .content {
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
-} */
-
 main {
   padding-bottom: 2em;
+}
+
+.loadingIndicator {
+  display: flex;
+  padding-top: 2rem;
+  justify-content: center;
+}
+
+.text-load {
+  padding-top: 20px;
+  color: black;
+  text-align: center;
+  font-weight: bold;
+  width: 50%;
 }
 
 /* Header */
