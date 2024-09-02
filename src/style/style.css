@@ -13,18 +13,54 @@ main {
   padding-bottom: 2em;
 }
 
+/* Loading Indicator Styles */
 .loadingIndicator {
+  position: fixed;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-25%);
   display: flex;
-  padding-top: 2rem;
   justify-content: center;
+  align-items: center;
+  font-family: "Poppins", sans-serif;
+}
+
+.dots-loader {
+  display: flex;
+  align-items: center;
+}
+
+.dot {
+  width: 8px;
+  height: 8px;
+  margin: 0 4px;
+  background-color: black;
+  border-radius: 70%;
+  animation: bounce 1.6s infinite ease-in-out;
+}
+
+.dot:nth-child(2) {
+  animation-delay: 0.4s;
+}
+
+.dot:nth-child(3) {
+  animation-delay: 0.6s;
+}
+
+@keyframes bounce {
+  0%,
+  80%,
+  100% {
+    transform: translateY(0);
+  }
+  40% {
+    transform: translateY(-10px);
+  }
 }
 
 .text-load {
-  padding-top: 20px;
-  color: black;
-  text-align: center;
-  font-weight: bold;
-  width: 50%;
+  margin-left: 10px;
+  font-size: 1rem;
 }
 
 /* Header */

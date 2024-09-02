@@ -1,4 +1,4 @@
-class notesData extends HTMLElement {
+class noteList extends HTMLElement {
   _shadowRoot = null;
   _style = null;
   _note = {
@@ -126,4 +126,4 @@ class notesData extends HTMLElement {
   }
 }
 
-customElements.define("note-list", notesData);
+customElements.define("note-list", noteList);

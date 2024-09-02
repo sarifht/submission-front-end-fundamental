@@ -23,10 +23,8 @@ class headerBar extends HTMLElement {
               justify-content: center;
               padding: 24px;
               position: fixed;
-              top: 0;
               z-index: 1;
-              color: white;
-              font-size: 1em;
+
             }
 
             nav .title-app {

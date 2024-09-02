@@ -4,6 +4,7 @@ class noteForm extends HTMLElement {
 
   constructor() {
     super();
+
     this._shadowRoot = this.attachShadow({ mode: "open" });
     this._style = document.createElement("style");
   }
@@ -14,123 +15,100 @@ class noteForm extends HTMLElement {
       display: block;
     }
 
-    .note-wrapper {
+    .wrapper {
       display: flex;
-      width: 100%;
       align-items: center;
       padding-top: 10%;
       flex-direction: column;
-    }
-
-    .note-form-wrapper {
+  }
+  
+  .wrapper .form-wrapper {
       background-color: white;
       opacity: 0.8;
       border: none;
       border-radius: 10px;
       box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
       justify-content: center;
-      padding: 2em;
-      width: 100%;
-      max-width: 400px;
-      margin: auto;
-    }
-
-    .form-title,
-    .form-description {
-      position: relative;
-    }
-
-    .error-message {
-      color: #ef5a6f;
-      font-size: 0.75rem;
-      margin-top: 0;
-      display: none; /* Tersembunyi secara default */
-    }
-
-    .char-count {
-      display: block;
-      text-align: right;
-      font-size: 0.7rem;
-      color: #666;
-      margin-bottom: 1em;
-    }
-
-    #note-title,
-    #note-description {
-      padding-right: 3em;
-    }
-
-    .note-form-wrapper h1 {
+      padding-left: 2em;
+      padding-right: 1em;
+      padding-bottom: 3em;
+      width: 600px;
+      height: 350px;
+  }
+  
+  .form-wrapper h1 {
       text-align: center;
       margin-bottom: 1em;
-      font-weight: 700;
-      font-size: 24px;
-      width: 100%;
-    }
+      font-weight: 800;
+  }
 
-    .note-form {
-      display: grid;
-      grid-template-columns: 1fr;
-      grid-gap: 1em;
-      width: 100%;
-    }
-
-    .note-form .form-title {
-      width: 100%;
-      margin-bottom: auto;
-    }
-
-    .note-form .form-title input {
-      font-size: 1rem;
-      width: 100%;
+  .form-title input {
       margin-bottom: 10px;
+      width: 93%;
       padding: 10px;
-      box-sizing: border-box;
-    }
-
-    .note-form .form-description {
-      width: 100%;
-    }
-
-    .note-form .form-description textarea {
-      font-size: 1rem;
+  }
+  
+  .form-desc textarea {
       padding: 6px;
-      width: 100%;
-      height: 9rem;
-      box-sizing: border-box;
+      width: 95%;
+  }
+  
+  .form-group button {
+    color: white;
+    font-weight: 600;
+    font-size: 1rem;
+    line-height: 1.5rem;
+    background-color: green;
+    padding-top: 0.6rem;
+    padding-bottom: 0.6rem;
+    padding-left: 2rem;
+    padding-right: 2rem;
+    border-radius: 5px;
+    transition: all 0.2s ease-in-out;
+    border: white;
+    width: 98%;
+    cursor: pointer;
+  }
+
+  .form-group button:hover {
+    opacity: 0.8;
+  }
+
+  @media screen and (max-width: 768px) {
+    .wrapper {
+        padding-top: 20%;
     }
 
-    .note-form .form-group {
-      width: 100%;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
+    .wrapper .form-wrapper {
+      width: 50%;
+    }
+  }
+
+  @media screen and (max-width: 576px) {
+    .wrapper {
+        padding-top: 30%;
     }
 
-    .form-description {
-      margin-bottom: 1em;
+    .form-wrapper h1 {
+      font-size: 20px;
+      padding-bottom: 5px;
     }
 
-    .note-form .form-group button {
-      color: black;
-      font-weight: 600;
-      font-size: 1rem;
-      line-height: 1.5rem;
-      background-color: #ffb200;
-      padding-top: 0.4rem;
-      padding-bottom: 0.4rem;
-      padding-left: 2rem;
-      padding-right: 2rem;
-      border-radius: 5px;
-      transition: all 0.2s ease-in-out;
-      border: white;
-      width: 100%;
-      cursor: pointer;
+    .wrapper .form-wrapper {
+      margin-left: 10px;
+      width: 320px;
+      height: 320px;
     }
 
-    .note-form .form-group button:hover {
-      opacity: 0.8;
+    .form-title input {
+      padding: 10px;
     }
+
+    .form-group .form-desc {
+      padding-top: 10px;
+    }    
+
+  }
     `;
   }
 
@@ -141,63 +119,15 @@ class noteForm extends HTMLElement {
   connectedCallback() {
     this.render();
     this._shadowRoot
-      .querySelector("#note-form")
+      .querySelector("#form")
       .addEventListener("submit", this._handleSubmit.bind(this));
-
-    // Tambahkan event listener untuk update jumlah karakter yang tersisa
-    this._shadowRoot
-      .querySelector("#note-title")
-      .addEventListener("input", this._updateTitleCharCount.bind(this));
-    this._shadowRoot
-      .querySelector("#note-description")
-      .addEventListener("input", this._updateDescriptionCharCount.bind(this));
-
-    // Tambahkan event listener untuk validasi
-    this._shadowRoot
-      .querySelector("#note-title")
-      .addEventListener("input", this._validateTitle.bind(this));
-    this._shadowRoot
-      .querySelector("#note-description")
-      .addEventListener("input", this._validateDescription.bind(this));
   }
 
   _handleSubmit(event) {
     event.preventDefault();
 
-    const titleInput = this._shadowRoot.querySelector("#note-title");
-    const descriptionInput =
-      this._shadowRoot.querySelector("#note-description");
-    const titleError = this._shadowRoot.querySelector("#title-error");
-    const descriptionError =
-      this._shadowRoot.querySelector("#description-error");
-
-    const title = titleInput.value.trim();
-    const description = descriptionInput.value.trim();
-
-    // Batasan karakter minimal
-    const minTitleLength = 5;
-    const minDescriptionLength = 15;
-
-    // Reset pesan error
-    titleError.textContent = "";
-    descriptionError.textContent = "";
-
-    let hasError = false;
-
-    // Validasi jumlah karakter minimal
-    if (title.length < minTitleLength) {
-      titleError.textContent = `Judul catatan harus memiliki minimal ${minTitleLength} karakter.`;
-      hasError = true;
-    }
-
-    if (description.length < minDescriptionLength) {
-      descriptionError.textContent = `Deskripsi catatan harus memiliki minimal ${minDescriptionLength} karakter.`;
-      hasError = true;
-    }
-
-    if (hasError) {
-      return; // Tidak mengirim form jika ada error
-    }
+    const title = this._shadowRoot.querySelector("#title").value;
+    const description = this._shadowRoot.querySelector("#description").value;
 
     const newNote = {
       id: `notes-${Math.random().toString(36).substring(2, 9)}`,
@@ -209,49 +139,8 @@ class noteForm extends HTMLElement {
 
     this.dispatchEvent(new CustomEvent("note-added", { detail: newNote }));
 
-    titleInput.value = "";
-    descriptionInput.value = "";
-  }
-
-  _updateTitleCharCount() {
-    const titleInput = this._shadowRoot.querySelector("#note-title");
-    const charCount = this._shadowRoot.querySelector("#title-char-count");
-    charCount.textContent = `${titleInput.value.length}/50`;
-  }
-
-  _updateDescriptionCharCount() {
-    const descriptionInput =
-      this._shadowRoot.querySelector("#note-description");
-    const charCount = this._shadowRoot.querySelector("#description-char-count");
-    charCount.textContent = `${descriptionInput.value.length}/300`;
-  }
-
-  _validateTitle() {
-    const titleInput = this._shadowRoot.querySelector("#note-title");
-    const titleError = this._shadowRoot.querySelector("#title-error");
-
-    if (titleInput.value.length < 5) {
-      titleError.textContent = `Judul catatan harus memiliki minimal 5 karakter.`;
-      titleError.style.display = "block";
-    } else {
-      titleError.textContent = "";
-      titleError.style.display = "none";
-    }
-  }
-
-  _validateDescription() {
-    const descriptionInput =
-      this._shadowRoot.querySelector("#note-description");
-    const descriptionError =
-      this._shadowRoot.querySelector("#description-error");
-
-    if (descriptionInput.value.length < 15) {
-      descriptionError.textContent = `Deskripsi catatan harus memiliki minimal 15 karakter.`;
-      descriptionError.style.display = "block";
-    } else {
-      descriptionError.textContent = "";
-      descriptionError.style.display = "none";
-    }
+    this._shadowRoot.querySelector("#title").value = "";
+    this._shadowRoot.querySelector("#description").value = "";
   }
 
   render() {
@@ -260,29 +149,26 @@ class noteForm extends HTMLElement {
 
     this._shadowRoot.appendChild(this._style);
     this._shadowRoot.innerHTML += `
-    <div class="note-wrapper">
-      <div class="note-form-wrapper">
-        <h1>Menambahkan Catatan Baru</h1>
-        <form action="" class="note-form" id="note-form">
-          <div class="form-group">
-            <div class="form-title">
-              <label for="note-title"></label>
-              <input type="text" id="note-title" name="note-title" placeholder="Judul Catatan" maxlength="50" required>
-              <div id="title-error" class="error-message"></div>
-              <small id="title-char-count" class="char-count">0/50</small>
+        <div class="wrapper">
+            <div class="form-wrapper">
+                <h1>Add New Notes</h1>
+                <form action="" class="form" id="form">
+                    <div class="form-group">
+                        <div class="form-title">
+                            <label for="title"></label>
+                            <input type="text" id="title" name="title" placeholder="Title" required>
+                        </div>
+                        <div class="form-desc">
+                            <label for="description"></label>
+                            <textarea name="description" id="description" cols="30" rows="10" placeholder="Description" required></textarea>
+                        </div>
+
+                        <button type="submit" name="submit" class="btn-submit">Add Notes</button>
+                    </div>
+                </form>
             </div>
-            <div class="form-description">
-              <label for="note-description"></label>
-              <textarea name="note-description" id="note-description" cols="30" rows="10" placeholder="Deskripsi Catatan..." maxlength="300" required></textarea>
-              <div id="description-error" class="error-message"></div>
-              <small id="description-char-count" class="char-count">0/300</small>
-            </div>
-            <button type="submit" name="submit" class="btn-submit">Simpan Catatanku</button>
-          </div>
-        </form>
-      </div>
-    </div>
-    `;
+        </div>
+        `;
   }
 }
 
