@@ -1,10 +1,42 @@
 // header-bar.js
 class headerBar extends HTMLElement {
   _shadowRoot = null;
+  _style = null;
 
   constructor() {
     super();
+
     this._shadowRoot = this.attachShadow({ mode: "open" });
+    this._style = document.createElement("style");
+  }
+
+  _updateStyle() {
+    this._style.textContent = `
+            :host {
+                display: block;
+            }
+
+            nav {
+              display: flex;
+              background-color: #005792;
+              width: 100%;
+              justify-content: center;
+              padding: 24px;
+              position: fixed;
+              z-index: 1;
+              color: white;
+              font-size: 1em;
+            }
+
+            nav .title-app {
+              color: white;
+              font-size: 1em;
+            }
+        `;
+  }
+
+  _emptyContent() {
+    this._shadowRoot.innerHTML = "";
   }
 
   connectedCallback() {
@@ -12,11 +44,10 @@ class headerBar extends HTMLElement {
   }
 
   render() {
-    const link = document.createElement("link");
-    link.setAttribute("rel", "stylesheet");
-    link.setAttribute("href", "src/style/style.css"); // Pastikan path ini benar setelah Webpack build
+    this._emptyContent();
+    this._updateStyle();
 
-    this._shadowRoot.appendChild(link);
+    this._shadowRoot.appendChild(this._style);
     this._shadowRoot.innerHTML += `
       <nav>    
         <div class="title-app">
