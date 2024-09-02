@@ -17,11 +17,6 @@ class footerBar extends HTMLElement {
   render() {
     this.emptyContent();
 
-    const link = document.createElement("link");
-    link.setAttribute("rel", "stylesheet");
-    link.setAttribute("href", "src/style/style.css");
-
-    this._shadowRoot.appendChild(link);
     this._shadowRoot.innerHTML += `
        <footer-bar>
             <p>&copy; 2024 - Aplikasi Pencatatan Online oleh Sarif Hidayatullah</p>
