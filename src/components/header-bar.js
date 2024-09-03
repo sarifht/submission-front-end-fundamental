@@ -21,7 +21,7 @@ class headerBar extends HTMLElement {
               background-color: #005792;
               width: 100%;
               justify-content: center;
-              padding: 24px;
+              padding: 16px;
               position: fixed;
               z-index: 1;
 
