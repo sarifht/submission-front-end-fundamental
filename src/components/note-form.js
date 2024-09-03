@@ -14,6 +14,10 @@ class noteForm extends HTMLElement {
     :host {
       display: block;
     }
+    
+    * {
+      font-family: "Nunito", sans-serif;
+    }
 
     .note-wrapper {
       display: flex;
