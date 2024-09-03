@@ -31,10 +31,14 @@ class noteList extends HTMLElement {
 
   _updateStyle() {
     this._style.textContent = `
-        :host {
-          display: block;
-        }
-
+    :host {
+      display: block;
+    }
+    
+    * {
+      font-family: "Nunito", sans-serif;
+    }
+    
         .grid-wrapper {
           padding-top: 5%;
           display: grid;
@@ -121,14 +125,25 @@ class noteList extends HTMLElement {
       <h4>${note.title}</h4>
                     
       <!-- Tanggal pembuatan catatan -->
-      <p class="date">${new Date(note.createdAt).toLocaleString()}</p>
+      <p class="date">
+        ${new Date(note.createdAt).toLocaleTimeString("id-ID", {
+          hour: "2-digit",
+          minute: "2-digit",
+          hour12: false,
+        })}, - ${new Date(note.createdAt).toLocaleDateString("id-ID", {
+          weekday: "long",
+          day: "numeric",
+          month: "long",
+          year: "numeric",
+        })}
+      </p>
                     
       <!-- Deskripsi catatan -->
       <p class="desc">${note.body}</p>
 
       <!-- Bagian untuk tombol hapus catatan -->
       <div class="note-delete">
-      <button class="button-delete" type="button" data-id="${note.id}">Delete</button>
+      <button class="button-delete" type="button" data-id="${note.id}">Hapus</button>
       </div>
     </div>
     `,
