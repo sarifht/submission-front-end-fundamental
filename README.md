@@ -2,9 +2,11 @@
 
 Kelas "Belajar Fundamental Front-End Web Development"
 
-Link GitHub: https://github.com/sarifht/submission-front-end-fundamental
+Link demo web: https://submission-front-end-fundamental2.vercel.app/
 
-Silahkan masuk ke branch submission-2
+Menggunakan repo baru https://github.com/sarifht/submission-front-end-fundamental2.git
+
+Dikarenakan di repo sebelumnya, belum bisa merge branch hehe :D
 
 ...
 
