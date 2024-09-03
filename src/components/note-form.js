@@ -163,28 +163,26 @@ class noteForm extends HTMLElement {
 
   @media screen and (max-width: 576px) {
     .wrapper {
-        padding-top: 30%;
+        padding-top: 2em;
     }
 
-    .form-wrapper h1 {
-      font-size: 20px;
-      padding-bottom: 5px;
+    .note-wrapper {
+      padding-top: 6em;
     }
 
-    .wrapper .form-wrapper {
-      margin-left: 10px;
-      width: 320px;
-      height: 320px;
+    .note-form-wrapper {
+      padding: 1em;
+      max-width: 60%;
+      align-items: center;
+      justify-items: center;
     }
 
-    .form-title input {
-      padding: 10px;
+    .note-form .form-title input,
+    .note-form .form-description textarea,
+    .note-form .form-group button {
+      font-size: 0.8rem; /* Mengurangi ukuran font lebih lanjut */
+      padding: 6px;
     }
-
-    .form-group .form-desc {
-      padding-top: 10px;
-    }    
-
   }
     `;
   }
