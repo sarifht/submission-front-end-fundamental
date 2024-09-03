@@ -39,9 +39,9 @@ const addNote = (note) => {
   Swal.fire({
     position: "center",
     icon: "success",
-    title: "Notes has been added", // Menampilkan pesan sukses menggunakan SweetAlert2
+    title: "Catatan Berhasil Ditambahkan", // Menampilkan pesan sukses menggunakan SweetAlert2
     showConfirmButton: false,
-    timer: 1500,
+    timer: 2000,
   })
     .then((responseJson) => {
       hideLoadingIndicator(); // Menyembunyikan indikator loading
@@ -55,24 +55,47 @@ const addNote = (note) => {
 
 // Fungsi untuk menghapus catatan dari API
 const removeNote = (noteId) => {
-  fetch(`${baseUrl}/notes/${noteId}`, {
-    method: "DELETE", // Menggunakan metode DELETE untuk menghapus data
-    headers: {
-      "X-Auth-Token": "12345", // Token autentikasi
-    },
-  });
   Swal.fire({
-    title: "Deleted!",
-    text: "Your note has been deleted.", // Menampilkan pesan sukses penghapusan menggunakan SweetAlert2
-    icon: "success",
-  })
-    .then((responseJson) => {
-      getNote(); // Mengambil catatan terbaru setelah menghapus
-    })
-    .catch((error) => {
-      hideLoadingIndicator(); // Menyembunyikan indikator loading jika terjadi kesalahan
-      showResponseMessage(error); // Menampilkan pesan error
-    });
+    title: "Kamu Yakin?",
+    text: "Ingin menghapus catatan ini",
+    icon: "warning",
+    showCancelButton: true, // Tampilkan tombol Cancel
+    confirmButtonColor: "#991b1b",
+    cancelButtonColor: "#94a3b8",
+    confirmButtonText: "Hapus Catatan Ini",
+    cancelButtonText: "Batal",
+  }).then((result) => {
+    if (result.isConfirmed) {
+      // Jika pengguna mengkonfirmasi
+      // Lakukan request DELETE hanya jika tombol "Yes" ditekan
+      fetch(`${baseUrl}/notes/${noteId}`, {
+        method: "DELETE", // Menggunakan metode DELETE untuk menghapus data
+        headers: {
+          "X-Auth-Token": "12345", // Token autentikasi
+        },
+      })
+        .then((response) => response.json())
+        .then((responseJson) => {
+          Swal.fire({
+            title: "Terhapus",
+            text: "Catatanmu berhasil dihapus!", // Menampilkan pesan sukses penghapusan menggunakan SweetAlert2
+            icon: "success",
+          });
+          getNote(); // Mengambil catatan terbaru setelah menghapus
+        })
+        .catch((error) => {
+          hideLoadingIndicator(); // Menyembunyikan indikator loading jika terjadi kesalahan
+          showResponseMessage(error); // Menampilkan pesan error
+        });
+    } else {
+      // Jika pengguna menekan tombol Cancel, tidak lakukan apapun
+      Swal.fire({
+        title: "Tidak Jadi",
+        text: "Catatanmu batal dihapus",
+        icon: "info",
+      });
+    }
+  });
 };
 
 // Fungsi untuk menampilkan catatan ke dalam DOM
@@ -101,8 +124,8 @@ const renderNotes = (notes) => {
 // Fungsi untuk menampilkan pesan respon (error/sukses) menggunakan SweetAlert2
 const showResponseMessage = (message) => {
   Swal.fire({
-    title: "The Internet?",
-    text: "That thing is still around?", // Menampilkan pesan menggunakan SweetAlert2
+    title: "Internet Kamu Bermasalah?",
+    text: "Silahkan coba hubungkan ulang", // Menampilkan pesan menggunakan SweetAlert2
     icon: "question",
   });
   showResponseMessage(message); // Menampilkan pesan tambahan dari argumen
