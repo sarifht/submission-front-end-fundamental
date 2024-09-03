@@ -19,7 +19,7 @@ class noteForm extends HTMLElement {
       display: flex;
       width: 100%;
       align-items: center;
-      padding-top: 2em;
+      padding-top: 10%;
       flex-direction: column;
     }
 
@@ -163,11 +163,11 @@ class noteForm extends HTMLElement {
 
   @media screen and (max-width: 576px) {
     .wrapper {
-        padding-top: 2em;
+        padding-top: 25%;
     }
 
     .note-wrapper {
-      padding-top: 6em;
+      padding-top: 25%;
     }
 
     .note-form-wrapper {

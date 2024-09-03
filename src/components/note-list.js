@@ -102,26 +102,42 @@ class noteList extends HTMLElement {
     this._shadowRoot.appendChild(this._style);
     this._shadowRoot.innerHTML += `
 
-          <div class="grid-wrapper">
-            <h1 class="all-notes">All Notes</h1><hr>
-            <div class="grid-container">
-            ${this._note
-              .map(
-                (note) => `
-                <div class="card-note">
-                    <h4>${note.title}</h4>
-                    <p class="date">${new Date(note.createdAt).toLocaleString()}</p>
-                    <p class="desc">${note.body}</p>
+    <!-- Wrapper utama untuk grid -->
+    <div class="grid-wrapper">
 
-                    <div class="note-delete">
-                        <button class="button-delete" type="button" data-id="${note.id}" >Delete</button>
-                    </div>
-                </div>
-                `,
-              )
-              .join("")}
-            </div>
-        </div>
+    <!-- Judul halaman -->
+    <h1 class="all-notes">Semua Catatan</h1>
+    <hr>
+
+    <!-- Kontainer untuk card catatan -->
+    <div class="grid-container">
+
+    <!-- Iterasi melalui array catatan dan menampilkan setiap catatan -->
+    ${this._note
+      .map(
+        (note) => `
+    <div class="card-note">
+      <!-- Judul catatan -->
+      <h4>${note.title}</h4>
+                    
+      <!-- Tanggal pembuatan catatan -->
+      <p class="date">${new Date(note.createdAt).toLocaleString()}</p>
+                    
+      <!-- Deskripsi catatan -->
+      <p class="desc">${note.body}</p>
+
+      <!-- Bagian untuk tombol hapus catatan -->
+      <div class="note-delete">
+      <button class="button-delete" type="button" data-id="${note.id}">Delete</button>
+      </div>
+    </div>
+    `,
+      )
+      .join("")}
+
+    </div>
+    </div>
+
     `;
   }
 }
