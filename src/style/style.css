@@ -63,69 +63,6 @@ main {
   font-size: 1rem;
 }
 
-/* Note List */
-.note-list {
-  display: block;
-}
-
-.note-list .grid-wrapper {
-  padding-top: 5%;
-  display: grid;
-}
-
-.note-list .grid-wrapper .all-notes {
-  padding-top: 1em;
-  text-align: center;
-}
-
-.note-list .grid-wrapper hr {
-  width: 90%;
-  border: 1.8px solid #ffb200;
-  margin: 1em auto;
-}
-
-.note-list .grid-wrapper .grid-container {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-  align-items: center;
-  justify-items: center;
-  gap: 2em;
-  padding: 2em;
-}
-
-.note-list .grid-wrapper .grid-container .card {
-  background-color: white;
-  opacity: 0.8;
-  border: none;
-  border-radius: 10px;
-  box-shadow:
-    0 4px 8px 0 rgba(0, 0, 0, 0.2),
-    0 6px 20px 0 rgba(0, 0, 0, 0.19);
-  width: 100%;
-  max-width: 300px;
-  height: 100%;
-  padding: 1em;
-  text-align: left;
-}
-
-.note-list .grid-wrapper .grid-container .card h4 {
-  margin-bottom: 0.5em;
-  font-size: 1.2em;
-}
-
-.note-list .grid-wrapper .grid-container .card .date {
-  font-size: 0.7em;
-  margin-top: -9px;
-  color: #666;
-}
-
-.note-list .grid-wrapper .grid-container .card .desc {
-  padding-top: 1em;
-  font-size: 0.9em;
-  line-height: 1.5em;
-  color: #333;
-}
-
 /* Footer */
 footer {
   display: flex;
