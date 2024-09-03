@@ -1,12 +1,7 @@
 class noteList extends HTMLElement {
   _shadowRoot = null;
   _style = null;
-  _note = {
-    id: null,
-    title: null,
-    body: null,
-    createdAt: null,
-  };
+  _note = [];
 
   constructor() {
     super();
@@ -21,7 +16,6 @@ class noteList extends HTMLElement {
 
   set note(value) {
     this._note = value;
-
     this.render();
   }
 
@@ -39,63 +33,90 @@ class noteList extends HTMLElement {
       font-family: "Nunito", sans-serif;
     }
     
-        .grid-wrapper {
-          padding-top: 5%;
-          display: grid;
-        }
+    .grid-wrapper {
+      padding-top: 5%;
+      display: grid;
+    }
 
-        .grid-wrapper .all-notes {
-            padding-top: 1em;
-            text-align: center;
-        }
+    .grid-wrapper .all-notes {
+      padding-top: 1em;
+      text-align: center;
+    }
 
-        hr {
-            width: 20%;
-            border: 1.8px solid #DE9D7E;
-        }
+    hr {
+      width: 90%;
+      border: 1.8px solid #ffb200;
+    }
       
-        .grid-wrapper .grid-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            align-items: center;
-            justify-items: center;
-            gap: 2em;
-            padding: 2em;
-        }
+    .grid-wrapper .grid-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      align-items: center;
+      justify-items: center;
+      gap: 2em;
+      padding: 2em;
+    }
         
-        .grid-container .card-note {
-            background-color: white;
-            opacity: 0.8;
-            border: none;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-            width: 90%;
-            height: 90%;
-            padding: 1em;
-        }
+    .grid-container .card-note {
+      background-color: white;
+      opacity: 0.8;
+      border: none;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+      width: 90%;
+      padding: 1em;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: max-height 1s ease-out;
+      overflow: hidden;
+      max-height: 200px; /* Set a fixed max-height for non-hover state */
+    }
+    
+    .card-note:hover {
+      max-height: none; /* Allow the card to expand fully on hover */
+    }
 
-        .card-note .date {
-          font-size: 0.70em;
-          margin-top: -9px;
-        }
+    .card-note h4 {
+      font-size: 1.2em;
+      margin-bottom: 0.2em;
+    }
+    
+    .card-note .date {
+      font-size: 0.7em;
+      padding-top: 0;
+    }
         
-        .card-note .desc {
-              padding-top: 1em;
-              font-size: 0.90em;
-          }
+    .card-note .desc {
+      display: -webkit-box;
+      -webkit-line-clamp: 3;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      padding-top: 0.4em;
+      font-size: 1em;
+      max-height: 4.5em; /* Untuk tiga baris */
+      transition: max-height 0.3s ease, overflow 0.3s ease;
+    }
 
-        .card-note .note-delete {
-            padding-top: 1em;
-        }
+    .card-note:hover .desc {
+      -webkit-line-clamp: unset; /* Menghapus batas baris */
+      max-height: none; /* Mengizinkan teks berkembang sepenuhnya */
+      overflow: visible; /* Teks lengkap ditampilkan */
+    }
 
-        .note-delete .button-delete {
-            background-color: red;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            padding: 8px;
-            cursor: pointer;
-        }
+    .card-note .note-delete {
+      padding-top: 1em;
+    }
+
+    .note-delete .button-delete {
+      background-color: #991b1b;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      padding: 8px;
+      cursor: pointer;
+    }
     `;
   }
 
@@ -139,7 +160,7 @@ class noteList extends HTMLElement {
       </p>
                     
       <!-- Deskripsi catatan -->
-      <p class="desc">${note.body}</p>
+      <p class="desc">${note.body.length > 120 ? note.body.substring(0, 119) + "..." : note.body}</p>
 
       <!-- Bagian untuk tombol hapus catatan -->
       <div class="note-delete">
